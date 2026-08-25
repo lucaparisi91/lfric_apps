@@ -41,7 +41,7 @@
                      module load lfric-meta-gcc-xios2/3.2
                      module load cray-hdf5-parallel
                      module load cray-netcdf-hdf5parallel
-                     
+
                      """
         [[[environment]]]
              COMPILER = 'gnu'
@@ -62,8 +62,8 @@
 
     [[EX_RUN]]
         [[[environment]]]
-            BIG_DATA_DIR   = '/work/y07/shared/lfric/data/'
-            SMALL_DATA_DIR = '/work/y07/shared/lfric/data/'
+            BIG_DATA_DIR   = '/work/z19/z19/shared/lfric/data'
+            SMALL_DATA_DIR = '/work/z19/z19/shared/lfric/data'
             TARGET_PLATFORM = 'ex'
             RUN_METHOD = srun
 

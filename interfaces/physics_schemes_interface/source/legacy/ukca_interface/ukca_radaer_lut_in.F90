@@ -118,7 +118,7 @@ real :: logs_array_in(1:length)
 real :: logs_array_out(1:length)
 
 integer :: icode
-character(len=errormessagelength) :: cmessage
+character(len=errormessagelength) :: cmessage = ''
 
 !DrHook-related parameters
 ! note dr_hook commented out here until overhead can be reduced, see UM:#2787

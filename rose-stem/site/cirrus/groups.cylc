@@ -13,7 +13,17 @@
 
 {%- do site_groups.update({
     "lfric_atm_oper_gnu_fast": [
-        "lfric_atm_nwp_gal9-C224_MG_ex_gnu_fast-debug-64bit-rbl32",
+        "lfric_atm_nwp_gal9_oper-C48_MG_ex_gnu_fast-debug-32bit",
+        "lfric_atm_nwp_gal9_oper-C896_MG_ex_gnu_fast-debug-32bit",
+    ],
+}) %}
+
+
+{%- do site_groups.update({
+    "lfric_atm_gnu_fast": [
+        "lfric_atm_nwp_gal9-C48_MG_ex_gnu_fast-debug-32bit",
+        "lfric_atm_nwp_gal9-C224_MG_ex_gnu_fast-debug-32bit",
+        "lfric_atm_nwp_gal9-C896_MG_ex_gnu_fast-debug-32bit",
     ],
 }) %}
 

@@ -38,10 +38,17 @@
                      umask 0022
                      module use /work/z19/z19/lparisi/nfs-testing/met-lfric-cirrus/environments/lfric/modules/Core
                      module load PrgEnv-gnu
-                     module load lfric-meta-gcc-xios2/3.2
+                     module load lfric-meta-gcc-no-xios/3.2
                      module load cray-hdf5-parallel
                      module load cray-netcdf-hdf5parallel
-
+                    
+                     XIOS=xios2
+                     XIOS_ROOT="/mnt/lustre/e1000/home/z19/z19/lparisi/nfs-testing/met-lfric-cirrus/build_lfric/xios/$XIOS"
+                     export FFLAGS="-I $XIOS_ROOT/inc $FFLAGS"
+                     export LIBRARY_PATH=$XIOS_ROOT/lib:$LIBRARY_PATH
+                     export LDFLAGS="-L $XIOS_ROOT/lib -I $XIOS_ROOT/inc -Wl,-rpath=$XIOS_ROOT/lib $LDFLAGS"
+                     export PATH=$XIOS_ROOT/bin:$PATH
+                    
                      """
         [[[environment]]]
              COMPILER = 'gnu'

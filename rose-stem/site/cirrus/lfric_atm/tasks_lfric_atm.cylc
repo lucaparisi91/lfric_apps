@@ -1,10 +1,83 @@
 {% do LOG.debug("Started in site/cirrus/lfric_atm/tasks_lfric_atm.cylc") %}
 
+
+
+{% if task_ns.conf_name == "nwp_gal9_oper-C224_MG" %}
+
+    {% do task_dict.update({
+        "opt_confs": ["um_dump","june_case","oper_diags"],
+        "resolution": "C224_MG",
+        "DT": 720,
+        "tsteps": 10,
+        "mpi_parts": 588,
+        "xios_nodes": 1,
+        "mpi_parts_xios" : 64,
+        "log_level": "info",
+        "xios_info_level": 1,
+        "xios_print_file": ".true.",
+        "memory_plot_ex": false,
+    }) %}
+
+{% elif task_ns.conf_name == "nwp_gal9_oper-C48_MG" %}
+
+    {% do task_dict.update({
+        "opt_confs": ["um_dump","june_case","oper_diags"],
+        "resolution": "C48_MG",
+        "DT": 720,
+        "tsteps": 10,
+        "mpi_parts": 24,
+        "xios_nodes": 1,
+        "mpi_parts_xios" : 4,
+        "log_level": "info",
+        "xios_info_level": 1,
+        "xios_print_file": ".true.",
+        "memory_plot_ex": false,
+    }) %}
+
+{% elif task_ns.conf_name == "nwp_gal9_oper-C896_MG" %}
+
+    {% do task_dict.update({
+        "opt_confs": ["um_dump","oper_diags_hres"],
+        "resolution": "C896_MG",
+        "DT": 36,
+        "tsteps": 10,
+        "mpi_parts": 4704,
+        "xios_nodes": 4,
+        "mpi_parts_xios" : 24,
+        "log_level": "info",
+        "xios_info_level": 100,
+        "xios_print_file": ".true.",
+        "memory_plot_ex": false,
+    }) %}
+
+
+
+{% endif %}
+
+
+
+
+
+
+{% if task_dict %}
+    {% do task_dict.update({
+        "kgo_checks": [],
+        "psyclone_transformation": "meto-ex1a",
+        "plot_str": "" }) %}
+    {% do task_dict.update({"application_dir": "lfric_apps/applications/lfric_atm"}) %}
+    {% if "app_name" not in task_dict %}
+        {% do task_dict.update({"app_name": "lfric_atm"}) %}
+    {% endif %}
+{% endif %}
+
+
 {% if task_dict %}
     {% do task_dict.update({
         "kgo_checks": [],
         "psyclone_transformation": "meto-ex1a",
         "plot_str": "" }) %}
 {% endif %}
+
+
 
 {% do LOG.debug("Finished in site/cirrus/lfric_atm/tasks_lfric_atm.cylc") %}
